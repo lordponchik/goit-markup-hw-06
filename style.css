@@ -11,10 +11,15 @@
   --secondary-border-color: #eeeeee;
   --hero-bg-color: #c4c4c4;
   --hero-bg-overlay: rgba(47, 48, 58, 0.4);
+  --work-bg-overlay: rgba(47, 48, 58, 0.8);
   --icon-color: #afb1b8;
   --icon-join-bg-color: rgba(255, 255, 255, 0.1);
   --backdrop-bg-color: rgba(0, 0, 0, 0.2);
-  --modal-border-color: rgba(0, 0, 0, 0.1);
+  --modal-btn-border-color: rgba(0, 0, 0, 0.1);
+  --modal-input-border-color: rgba(33, 33, 33, 0.2);
+  --mailing-border-color: rgba(255, 255, 255, 0.3);
+  --portfolio-bg-overlay: rgba(33, 150, 243, 0.9);
+  --modal-btn-send-color: #188ce8;
 
   --padding-top: 94px;
   --padding-bottom: 94px;
@@ -111,16 +116,16 @@ img {
   font-size: 26px;
   line-height: 1.19;
   color: var(--accent-color);
-
   transition: color var(--transition-duration) var(--transition-timing-function);
 }
-.header .logo:hover,
-.header .logo:focus {
-  color: var(--black-color);
+.header .logo:hover .header-logo,
+.header .logo:focus .header-logo {
+  color: var(--accent-color);
 }
 .header-logo {
   color: var(--black-color);
   font-family: 'Roboto', sans-serif;
+  transition: color var(--transition-duration) var(--transition-timing-function);
 }
 
 .site-nav {
@@ -219,11 +224,13 @@ img {
   color: var(--white-color);
 }
 .btn-page {
-  display: block;
+  display: flex;
   margin-left: auto;
   margin-right: auto;
+  align-items: center;
+  justify-content: space-between;
   padding: 10px 32px;
-  border: 0;
+  border-style: none;
   border-radius: 4px;
   min-width: 200px;
 
@@ -294,7 +301,7 @@ img {
   line-height: 1.14;
   text-align: center;
   text-transform: uppercase;
-  background: rgba(47, 48, 58, 0.8);
+  background: var(--work-bg-overlay);
   color: var(--white-color);
 }
 .team {
@@ -493,33 +500,31 @@ img {
   min-width: 358px;
   height: 50px;
   padding: 15px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--mailing-border-color);
   margin-right: 12px;
 
   box-sizing: border-box;
   border-radius: 4px;
+
+  transition: border var(--transition-duration) var(--transition-timing-function);
 }
-.mailing-input:focus {
+.mailing-input:focus,
+.mailing-input:hover {
   outline: none;
   border-color: var(--accent-color);
 }
 .mailing-btn {
-  display: flex;
-  min-width: 200px;
   padding: 10px 28px 10px 29px;
-  align-items: center;
-  justify-content: space-between;
+}
+.mailing-icon {
+  fill: var(--white-color);
 
-  letter-spacing: 0.06em;
-  border-style: none;
-  background: var(--accent-color);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.88;
-  color: var(--white-color);
-  cursor: pointer;
+  transition: fill var(--transition-duration) var(--transition-timing-function);
+}
+
+.mailing-btn:hover > .mailing-icon,
+.mailing-btn:focus > .mailing-icon {
+  fill: var(--accent-color);
 }
 /* portfolio */
 .portfolio-filter {
@@ -611,7 +616,7 @@ img {
   font-size: 18px;
   line-height: 1.56;
   color: #ffffff;
-  background-color: rgba(33, 150, 243, 0.9);
+  background-color: var(--portfolio-bg-overlay);
 
   transform: translateY(100%);
   transition: transform var(--transition-duration) var(--transition-timing-function);
@@ -652,6 +657,7 @@ img {
   left: 50%;
   min-width: 528px;
   min-height: 581px;
+  padding: 40px;
 
   background-color: var(--white-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -677,7 +683,7 @@ img {
   justify-content: center;
 
   border-style: none;
-  border: 1px solid var(--modal-border-color);
+  border: 1px solid var(--modal-btn-border-color);
   background-color: var(--white-color);
   font-weight: 700;
   cursor: pointer;
@@ -692,9 +698,7 @@ img {
 .modal-button:focus .modal-button-icon {
   fill: var(--accent-color);
 }
-.modal-container {
-  padding: 40px;
-}
+
 .modal-title {
   font-weight: 700;
   font-size: 20px;
@@ -704,37 +708,138 @@ img {
   text-align: center;
 }
 
-.modal-form > .modal-label {
+.modal-form-group {
+  margin-bottom: 10px;
+}
+.modal-form .modal-form-group:nth-last-of-type(2) {
+  margin-bottom: 20px;
+}
+.modal-form .modal-form-group:last-of-type {
+  margin-bottom: 30px;
+}
+
+.modal-field {
+  margin-bottom: 10px;
+}
+
+.modal-label {
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.01em;
 }
 
+.modal-input-overlay {
+  position: relative;
+  display: block;
+}
+
 .modal-input {
   width: 100%;
   height: 40px;
-  margin-bottom: 10px;
-  border: 1px solid rgba(33, 33, 33, 0.2);
+  padding: 11px 12px 11px 42px;
+  border: 1px solid var(--modal-input-border-color);
+
   border-radius: 4px;
-  background-color: none;
+
+  transition: border var(--transition-duration) var(--transition-timing-function);
+}
+
+.modal-icon {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+
+  transition: fill var(--transition-duration) var(--transition-timing-function);
 }
 
 .modal-input:focus,
-.modal-input:hover {
+.modal-input:hover,
+.modal-input:not(:placeholder-shown) {
   border-color: var(--accent-color);
   outline: none;
 }
+
+.modal-input:focus + .modal-icon,
+.modal-input:hover + .modal-icon,
+.modal-input:not(:placeholder-shown) + .modal-icon {
+  fill: var(--accent-color);
+}
+
 .modal-comment {
   height: 120px;
   padding: 12px 16px;
   resize: none;
-  margin-bottom: 20px;
+}
+.checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: none;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+.agreement-check {
+  width: 16px;
+  height: 15px;
+  display: flex;
+  margin-right: 9px;
+  border: 2px solid var(--secondary-text-color);
+
+  border-radius: 2px;
+
+  transition: border var(--transition-duration) var(--transition-timing-function);
+}
+.agreement-field:hover .agreement-check,
+.agreement-field:focus .agreement-check {
+  border-color: var(--accent-color);
+}
+.agreement-icon {
+  fill: transparent;
+}
+.checkbox:checked ~ .agreement-check {
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
+}
+.checkbox:checked ~ .agreement-check .agreement-icon {
+  fill: var(--white-color);
+}
+
+.agreement-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
 }
 .agreement-text {
-  display: inline-block;
-  margin-bottom: 30px;
+  margin-right: 5px;
 }
+
 .agreement-link {
-  text-decoration-line: underline;
+  position: relative;
+  text-decoration-line: none;
   color: var(--accent-color);
+}
+.agreement-link:after {
+  position: absolute;
+  content: '';
+  display: block;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--accent-color);
+}
+.agreement-link:hover,
+.agreement-link:focus {
+  color: var(--primary-text-color);
+}
+.modal-btn-send {
+  padding: 10px 55px 10px 56px;
+  background-color: var(--modal-btn-send-color);
 }

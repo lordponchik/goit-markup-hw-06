@@ -419,10 +419,12 @@
         <div class="item-footer mailing-block">
           <b class="mailing-title">Подпишитесь на рассылку</b>
           <form class="mailing-form">
-            <input type="mail" name="mailing-email" placeholder="E-mail" class="mailing-input" />
-            <button type="submit" class="mailing-btn">
+            <input type="email" name="mailing-email" placeholder="E-mail" class="mailing-input" />
+            <button type="submit" class="btn-page mailing-btn">
               Подписаться
-              <svg width="24" height="24"><use href="./images/icon.svg#icon-send"></use></svg>
+              <svg width="24" height="24" class="mailing-icon">
+                <use href="./images/icon.svg#icon-send"></use>
+              </svg>
             </button>
           </form>
         </div>
@@ -435,30 +437,73 @@
             <use href="./images/sprite.svg#icon-close-black"></use>
           </svg>
         </button>
-        <div class="modal-container">
-          <p class="modal-title">Оставьте свои данные, мы вам перезвоним</p>
-          <form class="modal-form">
-            <label for="name" class="modal-label">Имя</label>
-            <input type="text" class="modal-input" name="name" id="name" />
-            <label for="tel" class="modal-label">Телефон</label>
-            <input type="tel" class="modal-input" name="telephone" id="tel" />
-            <label for="email" class="modal-label">Почта</label>
-            <input type="mail" class="modal-input" name="email" id="email" />
-            <label for="comment" class="modal-label">Комментарий</label>
-            <textarea
-              name="comment"
-              id="comment"
-              placeholder="Введите текст"
-              class="modal-comment modal-input"
-            ></textarea>
 
-            <label for="agreement" class="agreement-text"
-              ><input type="checkbox" name="agreement" id="agreement" />Соглашаюсь с рассылкой и
-              принимаю <a href="" class="agreement-link">Условия договора</a></label
-            >
-            <button type="submit" class="btn-page">Отправить</button>
-          </form>
-        </div>
+        <p class="modal-title">Оставьте свои данные, мы вам перезвоним</p>
+        <form class="modal-form">
+          <div class="modal-form-group">
+            <label class="modal-field">
+              <span class="modal-label">Имя</span>
+              <span class="modal-input-overlay">
+                <input type="text" class="modal-input" name="user-name" placeholder=" " />
+                <svg class="modal-icon">
+                  <use href="./images/icon.svg#icon-person"></use>
+                </svg>
+              </span>
+            </label>
+          </div>
+
+          <div class="modal-form-group">
+            <label class="modal-field">
+              <span class="modal-label">Телефон</span>
+              <span class="modal-input-overlay">
+                <input type="tel" class="modal-input" name="user-phone" placeholder=" " />
+                <svg class="modal-icon">
+                  <use href="./images/icon.svg#icon-phone"></use>
+                </svg>
+              </span>
+            </label>
+          </div>
+
+          <div class="modal-form-group">
+            <label class="modal-field">
+              <span class="modal-label">Почта</span>
+              <span class="modal-input-overlay">
+                <input type="email" class="modal-input" name="user-email" placeholder=" " />
+                <svg class="modal-icon">
+                  <use href="./images/icon.svg#icon-email"></use>
+                </svg>
+              </span>
+            </label>
+          </div>
+
+          <div class="modal-form-group">
+            <label class="modal-field">
+              <span class="modal-label">Комментарий</span>
+              <textarea
+                name="user-comment"
+                placeholder="Введите текст"
+                class="modal-comment modal-input"
+              ></textarea>
+            </label>
+          </div>
+
+          <div class="modal-form-group">
+            <label class="agreement-field">
+              <input type="checkbox" name="agreement" class="checkbox" />
+              <span class="agreement-check">
+                <svg class="agreement-icon">
+                  <use href="./images/icon.svg#icon-chek-mark"></use>
+                </svg>
+              </span>
+              <span class="agreement-text">Соглашаюсь с рассылкой и принимаю</span>
+              <a href="" class="agreement-link" target="_blank" rel="noreferrer noopener"
+                >Условия договора</a
+              >
+            </label>
+          </div>
+
+          <button type="submit" class="btn-page modal-btn-send">Отправить</button>
+        </form>
       </div>
     </div>
     <script src="./js/modal.js"></script>
